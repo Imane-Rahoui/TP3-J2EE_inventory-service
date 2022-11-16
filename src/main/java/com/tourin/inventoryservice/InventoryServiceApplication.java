@@ -26,8 +26,10 @@ public class InventoryServiceApplication {
 
 	@Bean
 	CommandLineRunner start(ProductRepository productRepository, RepositoryRestConfiguration restConfiguration){
+		// projection sinon vc http://localhost:8888/PRODUCT-SERVICE/products?projection=fullproduct waloooo tu va pas voir l id par defaut with rest
+		// pour afficher l id il faut creer une classe de projection ou ajouter la ligne suivante
 		restConfiguration.exposeIdsFor(Product.class);
-		return args -> {
+ 		return args -> {
 			productRepository.save(new Product(null,"Ordinateur",88,12));
 			productRepository.save(new Product(null,"Imprimante",88,15));
 			productRepository.save(new Product(null,"Smartphone",1288,55));
